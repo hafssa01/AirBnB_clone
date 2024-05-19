@@ -1,22 +1,33 @@
 #!/usr/bin/python3
 
+"""HBNB command-line interpreter.
+
+This script provides a simple command-line interface for interacting with
+the HBNB application (if applicable). It allows users to execute commands
+by typing them at the prompt.
+"""
+
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
 
-    """HBNB command interpreter class."""
+    """HBNB command interpreter class.
+
+    This class provides a simple command-line interface for interacting
+    with the HBNB application (if applicable).
+    """
 
     prompt = '(hbnb) '
 
     def do_EOF(self, line):
-        """Handle EOF to exit the program"""
+        """Handle EOF to exit the program."""
         print()
         return True
 
     def do_quit(self, line):
-       """Quits the command interpreter."""
-       return True
+        """Quits the HBNB command interpreter."""
+        return True
 
     def emptyline(self):
         """Ignores empty lines."""
