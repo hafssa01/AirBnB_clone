@@ -30,8 +30,7 @@ class BaseModel:
         """
         Returns a string representation of the instance
         """
-        class_name = self.__class__.__name__
-        return f"[{class_name}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
@@ -62,5 +61,4 @@ if __name__ == "__main__":
     print(my_model_json)
     print("JSON of my_model:")
     for key in my_model_json.keys():
-        key_type = type(my_model_json[key])
-        print("\t{}: ({}) - {}".format(key, key_type, my_model_json[key]))
+        print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
