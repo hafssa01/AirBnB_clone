@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in self.classList:
             print("** class doesn't exist **")
         elif len(args) < 2:
-            print("*** instance id is missing ***")
+            print("** instance id is missing **")
         else:
             dict = storage.all()  # retrieves all objects from the storage
 
@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
             if key in dict:  # checks if instance exists in returned dict
                 print(dict[key])
             else:
-                print("*** no instance found ***")
+                print("** no instance found **")
 
     def do_destroy(self, line):
         """
@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in self.classList:
             print("** class doesn't exist **")
         elif len(args) < 2:
-            print("*** instance id is missing ***")
+            print("** instance id is missing **")
         else:
             dict = storage.all()  # retrieves all objects from the storage
 
@@ -101,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
                 del dict[key]
                 storage.save()
             else:
-                print("*** no instance found ***")
+                print("** no instance found **")
 
     def do_all(self, line):
         """
