@@ -4,8 +4,6 @@ This module contains the class FileStorage
 """
 import json
 import os
-from models.base_model import BaseModel
-from models.base_model import User
 
 
 class FileStorage():
