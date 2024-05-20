@@ -9,11 +9,12 @@ And this is a list of all used modules in this section
 """
 
 import cmd
-from models.base_model import BaseModel 
+from models.base_model import BaseModel
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
-    
+
     """HBNB command interpreter class.
 
     This class provides a simple command-line interface for interacting
@@ -43,11 +44,11 @@ class HBNBCommand(cmd.Cmd):
         """Print help for the EOF command."""
         print('Quit command to exit the program')
 
-    #CRUD operations
+    # CRUD operations
 
     def do_create(self, line):
         """
-        create: Creates a new instance of BaseModel, 
+        create: Creates a new instance of BaseModel,
         Saves it (to the JSON file) and prints the unique id
         """
         args = line.split()
@@ -74,10 +75,10 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("*** instance id is missing ***")
         else:
-            dict = storage.all() #retrieves all objects from the storage
+            dict = storage.all()  # retrieves all objects from the storage
 
-            key = "{}.{}".format(args[0], args[1]) #constructed key using string formatting
-            if key in dict: #checks if instance exists in returned dict
+            key = "{}.{}".format(args[0], args[1])  # constructring a key
+            if key in dict:  # checks if instance exists in returned dict
                 print(dict[key])
             else:
                 print("*** no instance found ***")
@@ -96,20 +97,21 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("*** instance id is missing ***")
         else:
-            dict = storage.all() #retrieves all objects from the storage
+            dict = storage.all()  # retrieves all objects from the storage
 
-            key = "{}.{}".format(args[0], args[1]) #constructed key using string formatting
-            if key in dict: #checks if instance exists in returned dict
+            key = "{}.{}".format(args[0], args[1])
+            if key in dict:
                 del dict[key]
                 storage.save()
             else:
                 print("*** no instance found ***")
-    
+
     def do_all(self, line):
         """
-        Prints all string representation of all instances based or not on the class name
+        Prints all string representation of all instances
+        Based or not on the class name
         """
-        dict = storage.all() #retrieves all objects from the storage
+        dict = storage.all()
         args = line.split()
 
         if len(args) == 0:
@@ -121,8 +123,6 @@ class HBNBCommand(cmd.Cmd):
             for key, value in dict.items():
                 if key.split('.')[0] == args[0]:
                     print(str(value))
-
-
 
     def do_update(self, line):
         """
@@ -139,35 +139,35 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 2:
             print("** instance id is missing **")
         else:
-            dict = storage.all() #retrieves all objects from the storage
+            dict = storage.all()
 
-            key = "{}.{}".format(args[0], args[1]) #constructed key using string formatting
-            if key not in dict: #checks if instance exists in returned dict
+            key = "{}.{}".format(args[0], args[1])
+            if key not in dict:
                 print("** no instance found **")
             elif len(args) < 3:
                 print("** attribute name missing **")
             elif len(args) < 4:
                 print("** value missing **")
             else:
-                #retrieves an object associated to
-                #specefic class name w/ an unique id
-                obj = dict[key] 
+
+                # retrieves an object associated to
+                # specefic class name w/ an unique id
+
+                obj = dict[key]
 
                 att_name = args[2]
                 att_value = args[3]
 
-                #Handles type's error
+                # Handles type's error
                 try:
-                    att_value = eval(att_value) #evaluating this string val
+                    att_value = eval(att_value)  # evaluating this string val
                 except Exception:
                     pass
-                #Updates the object's attribute
-                #to a new given value
+                # Updates the object's attribute
+                # to a new given value
                 setattr(obj, att_name, att_value)
 
                 obj.save()
-  
-
 
 
 if __name__ == '__main__':
