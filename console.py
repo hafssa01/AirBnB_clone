@@ -7,6 +7,12 @@ And this is a list of all used modules in this section
 
 import cmd
 from models.base_model import BaseModel
+from models.base_model import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models import storage
 
 
@@ -19,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = '(hbnb) '
-    classList = ["BaseModel"]
+    classList = ["BaseModel", "User", "City", "Place", "Stat", "Amnity", "Review"]
 
     def do_EOF(self, line):
         """Handle EOF to exit the program."""
@@ -45,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """
-        create: Creates a new instance of BaseModel,
+        create: Creates a new instance of a given class,
         Saves it (to the JSON file) and prints the unique id
         """
         args = line.split()
@@ -55,8 +61,8 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in self.classList:
                 print("** class doesn't exist **")
             else:
-                new_instance = BaseModel()
-                new_instance.save()
+                new_instance = eval(f"{args[0]}()")
+                storage.save()
                 print(new_instance.id)
 
     def do_show(self, line):
