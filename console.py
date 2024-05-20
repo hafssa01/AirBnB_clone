@@ -2,9 +2,6 @@
 
 """HBNB command-line interpreter.
 
-This script provides a simple command-line interface for interacting with
-the HBNB application (if applicable). It allows users to execute commands
-by typing them at the prompt.
 And this is a list of all used modules in this section
 """
 
