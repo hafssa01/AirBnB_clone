@@ -7,7 +7,7 @@ And this is a list of all used modules in this section
 
 import cmd
 from models.base_model import BaseModel
-from models.base_model import User
+from models.user import User
 from models.place import Place
 from models.state import State
 from models.city import City
