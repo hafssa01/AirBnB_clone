@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in self.classList:
             print("** class doesn't exist **")
         elif len(args) < 2:
-            print("** instanc id missing **")
+            print("** instance id missing **")
         else:
             dict = storage.all()
 
